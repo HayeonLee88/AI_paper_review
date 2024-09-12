@@ -1,26 +1,27 @@
 # ✴️ Point-Query Quadtree for Crowd Counting, Localization, and More
-- [✴️ Point-Query Quadtree for Crowd Counting, Localization, and More](#️point-query-quadtree-for-crowd-counting-localization-and-more)
-    - [군중 계수(Crowd Counting)란?](#군중-계수crowd-counting란)
-- [Abstract](#abstract)
-- [1. Introduction](#1-introduction)
-- [2. Related Work](#2-related-work)
-  - [Counting by Density Map](#counting-by-density-map)
-  - [Counting by Localization](#counting-by-localization)
-  - [Transformer Based Counting](#transformer-based-counting)
-- [3. Counting Crowd by Querying Points](#3-counting-crowd-by-querying-points)
-  - [3.1. Problem Formulation](#31-problem-formulation)
-  - [3.2. Architecture Overview](#32-architecture-overview)
-  - [3.3. Point-Query Quadtree](#33-point-query-quadtree)
-    - [Quadtree Construction](#quadtree-construction)
-    - [Point Query Representation](#point-query-representation)
-    - [Crowd Prediction](#crowd-prediction)
-  - [3.4. Progressive Querying in Rectangle Window](#34-progressive-querying-in-rectangle-window)
-    - [Progressive Encoder Attention](#progressive-encoder-attention)
-    - [Decoding Within Rectangle Window](#decoding-within-rectangle-window)
-  - [3.5. Network Optimization](#35-network-optimization)
-    - [Traninng](#traninng)
-    - [Inference](#inference)
-  - [\[추가 작성 예정\]](#추가-작성-예정)
+
+## 목차
+- [군중 계수(Crowd Counting)란?](#군중-계수crowd-counting란)
+0. [Abstract](#abstract)
+1. [Introduction](#1-introduction)
+2. [Related Work](#2-related-work)
+  * [Counting by Density Map](#counting-by-density-map)
+  * [Counting by Localization](#counting-by-localization)
+  * [Transformer Based Counting](#transformer-based-counting)
+3. [Counting Crowd by Querying Points](#3-counting-crowd-by-querying-points)
+   * 3.1.[Problem Formulation](#31-problem-formulation)
+   * 3.2. [Architecture Overview](#32-architecture-overview)
+   * 3.3. [Point-Query Quadtree](#33-point-query-quadtree)
+     * [Quadtree Construction](#quadtree-construction)
+     * [Point Query Representation](#point-query-representation)
+     * [Crowd Prediction](#crowd-prediction)
+   * 3.4. [Progressive Querying in Rectangle Window](#34-progressive-querying-in-rectangle-window)
+     * [Progressive Encoder Attention](#progressive-encoder-attention)
+     * [Decoding Within Rectangle Window](#decoding-within-rectangle-window)
+   * 3.5. [Network Optimization](#35-network-optimization)
+     * [Traninng](#traninng)
+     * [Inference](#inference)
+* [\[추가 작성 예정\]](#추가-작성-예정)
   - [References](#references)
 
 
@@ -47,7 +48,7 @@
 # 1. Introduction
 
 <p align="center">
-  <img src="./figure1.png" width="800">
+  <img src="./images/figure1.png" width="800">
 </p>
 
 - 포인트 쿼리 설계를 통해 모델은 임의의 포인트를 입력으로 받아 각 포인트가 사람인지 여부와 위치를 추론할 수 있다.
@@ -58,7 +59,7 @@
     - 포인트가 너무 적으면 과소평가가 발생하고, 포인트가 너무 많으면 계산 비용이 많이 들기 때문
 
 <p align="center">
-  <img src="./figure1_b.png" width="300">
+  <img src="./images/figure1_b.png" width="300">
 </p>
 
 - 저자는 이러한 문제를 해결하기 위해 분해 가능한 구조인 point-query quadtree를 제안한다.
@@ -69,7 +70,7 @@
 # 2. Related Work
 
 <p align="center">
-  <img src="./figure1_a.png" width="250">
+  <img src="./images/figure1_a.png" width="250">
 </p>
 
 ## Counting by Density Map
@@ -110,7 +111,7 @@ ii) progressive rectangle window atention 메커니즘
 ## 3.2. Architecture Overview
 
 <p align="center">
-  <img src="./figure2.png" width="800">
+  <img src="./images/figure2.png" width="800">
 </p>
 
 PET를 구성하는 네 가지 요소: CNN backbone, encoder-decoder transformer, point-query quadtree, prediction head
@@ -144,7 +145,7 @@ $$
 ### Quadtree Construction
 ---
 <p align="center">
-  <img src="./figure3.png" width="500">
+  <img src="./images/figure3.png" width="500">
 </p>
 
 - 저자는 포인트 쿼리를 sparse하고 dense한 장면으로 확장할 수 있도록 분해 가능한 구조인 point-query quadtree를 제안
@@ -152,7 +153,7 @@ $$
     - 따라서 quadtree를 구성하기 위해 region-based quadtree splitter를 채택
 
 <p align="center">
-  <img src="./figure3_1.png" width="500">
+  <img src="./images/figure3_1.png" width="500">
 </p>
 
 **Quadtree Level 0**: K의 stride으로 이미지에 sparse 쿼리 포인트를 균일하게 설정.
@@ -164,7 +165,7 @@ $$
 
 
 <p align="center">
-  <img src="./figure3_2.png" width="500">
+  <img src="./images/figure3_2.png" width="500">
 </p>
 
 **Quadtree Level 1**: Dense 영역의 초기 쿼리 포인트는 밀집 쿼리 포인트로 분할되어 quadtree 레벨 1을 형성.
@@ -175,14 +176,14 @@ $$
 
 
 <p align="center">
-  <img src="./quadtree_splitter.png" width="800">
+  <img src="./images/quadtree_splitter.png" width="800">
 </p>
 
 - 또한 Quadtree Splitter는 AvgPooling 레이어와 1×1 Conv 레이어, 시그모이드 함수로 구성되므로 계산 비용이 작다.
 
 
 <p align="center">
-  <img src="./figure4.png" width="500">
+  <img src="./images/figure4.png" width="500">
 </p>
 
 - 빨간색 영역은 quadtree 분할이 필요한 혼잡한 영역을 나타낸다. 분할 맵은 0.5의 threshold을 사용하여 이진 분할된다.
@@ -220,7 +221,7 @@ $$
 
 
 <p align="center">
-  <img src="./figure5.png" width="300">
+  <img src="./images/figure5.png" width="300">
 </p>
 
 - 저자는 다양한 규모의 군중 정보를 인코딩하기 위해 progressive attention 메커니즘을 사용, 트랜스포머 인코더가 먼저 충분히 큰 영역을 검사한 다음 작은 영역에 초점을 맞추도록 한다.
@@ -228,7 +229,7 @@ $$
 
 
 <p align="center">
-  <img src="./figure6.png" width="300">
+  <img src="./images/figure6.png" width="300">
 </p>
 
 - 입력 이미지가 주어지면 먼저 처음 몇 개의 인코더 레이어에서 비교적 큰 rectangle window 내에서 attention을 수행
@@ -238,13 +239,13 @@ $$
 
 
 <p align="center">
-  <img src="./supplementary_fig3.png" width="300">
+  <img src="./images/supplementary_fig3.png" width="300">
 </p>
     
 - 인코더 attention은 다음과 같이 계산
   
 <p align="center">
-  <img src="./formula1.png" width="500">
+  <img src="./images/formula1.png" width="500">
 </p>
 
 - 여기서 $x^{l-1}$과 $x^l$은 각각 인코더 레이어 $l-1$과 레이어 $l$의 출력 feature이다.
@@ -255,7 +256,7 @@ $$
 
 
 <p align="center">
-  <img src="./calc.png" width="500">
+  <img src="./images/calc.png" width="500">
 </p>
 
 - progressive rectangle window attention 디자인의 이점으로 선형 복잡도로 효율적인 계산을 수행할 수 있으며, 고해상도 이미지를 처리할 때 유용하다.
@@ -272,13 +273,13 @@ $$
 - dense 포인트 쿼리의 window 크기는 $\frac{1}{4}s_e\times \frac{1}{4}r_es_e$로 줄인다.
 
 <p align="center">
-  <img src="./supplementary_fig3.png" width="300">
+  <img src="./images/supplementary_fig3.png" width="300">
 </p>
 
 - 디코더 attention은 다음과 같이 계산
 
 <p align="center">
-  <img src="./formula2.png" width="500">
+  <img src="./images/formula2.png" width="500">
 </p>
 
 - $x^N$: 트랜스포머 인코더의 최종 ouput
@@ -298,7 +299,7 @@ $$
 - loss는 다음과 같이 계산:
     
 <p align="center">
-  <img src="./formula3.png" width="500">
+  <img src="./images/formula3.png" width="500">
 </p>
     
   - $i$: 포인트 쿼리의 인덱스
@@ -318,7 +319,7 @@ $$
 - 또한 quadtree splitter의 학습 과정은 다음과 같다.
     
 <p align="center">
-  <img src="./formula4.png" width="500">
+  <img src="./images/formula4.png" width="500">
 </p>
     
 - $M_s$: split map
@@ -332,7 +333,7 @@ $$
 - 최종 손실 함수는 다음과 같다:
     
 <p align="center">
-  <img src="./formula5.png" width="500">
+  <img src="./images/formula5.png" width="500">
 </p>
     
 - $\lambda_2$: weight-balancing 하이퍼파라미터

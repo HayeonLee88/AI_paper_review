@@ -32,7 +32,7 @@
 <!-- TOC --><a name="1-introduction"></a>
 ## 1. Introduction
 <p align="center">
-  <img src="./figure1.png" width="350">
+  <img src="./images/figure1.png" width="350">
 </p>
 
 - 이전 연구에서는 depth, width, image size(resolution) 세 가지 차원 중 오직 하나만 스케일 하는 것이 일반적이었다.
@@ -44,7 +44,7 @@
 
 
 <p align="center">
-  <img src="./figure2.png" width="800">
+  <img src="./images/figure2.png" width="800">
 </p>
 
 기존의 스케일링 방식 (a), (b), (c), (d), 저자가 제안한 compound scaling (e)
@@ -105,14 +105,14 @@ $$
 - ConvNet의 N은 구성된 레이어들의 리스트에 의해 표현될 수 있다.
 
 <p align="center">
-  <img src="./formula_n.png" width="400">
+  <img src="./images/formula_n.png" width="400">
 </p>
 
 - ConvNet의 레이어들은 자주 다수의 stage 그리고 같은 architecture를 공유하는 각 stage의 모든 레이어들로 나눠진다.
 - 따라서 ConvNet을 아래와 같이 정의할 수 있다.
     
 <p align="center">
-  <img src="./formula1.png" width="400">
+  <img src="./images/formula1.png" width="400">
 </p>
     
     - $F_i^{L_i}$는 stage $i$에서 $L_i$번 반복되는 레이어 $F_i$를 의미한다.
@@ -122,12 +122,12 @@ $$
     - $\hat F_i, \hat L_i, \hat H_i, \hat C_i$는 baseline 네트워크에서 사전 정의된 파라미터
         
 <p align="center">
-  <img src="./formula2.png" width="400">
+  <img src="./images/formula2.png" width="400">
 </p>
         
         
 <p align="center">
-  <img src="./table1.png" width="500">
+  <img src="./images/table1.png" width="500">
 </p>
 
 <!-- TOC --><a name="32-scaling-dimensions"></a>
@@ -138,11 +138,11 @@ $$
 
         
 <p align="center">
-  <img src="./figure3.png" width="800">
+  <img src="./images/figure3.png" width="800">
 </p>
 
 <p align="center">
-  <img src="./figure3-1.png" width="300">
+  <img src="./images/figure3-1.png" width="300">
 </p>
 
 **Depth ($d$)**
@@ -153,7 +153,7 @@ $$
     - skip connections과 batch normalization 같은 몇몇의 테크닉들이 훈련에서의 문제를 완화하였다.
 
 <p align="center">
-  <img src="./figure3-2.png" width="300">
+  <img src="./images/figure3-2.png" width="300">
 </p>
 
 **Width($w$)**
@@ -164,7 +164,7 @@ $$
     - Figure 3에서 네트워크가 큰 $w$로 더 넓어질 때 accuracy가 급격하게 saturate 되는 것을 볼 수 있다.
 
 <p align="center">
-  <img src="./figure3-3.png" width="300">
+  <img src="./images/figure3-3.png" width="300">
 </p>
 
 **Resolution ($r$)**
@@ -182,7 +182,7 @@ $$
 ### 3.3. Coumpound Scaling
 
 <p align="center">
-  <img src="./figure4.png" width="500">
+  <img src="./images/figure4.png" width="500">
 </p>
 - 저자는 경험적으로 다른 차원들을 스케일링 하는 것은 독립적이지 않다는 것을 발견했다.
     - 고화질의 이미지에 있어서 네크워크의 depth를 늘려야만한다.
@@ -192,7 +192,7 @@ $$
 > 💡 관찰 2 - 더 나은 acccuracy와 efficiency를 얻기 위해서는 ConvNet 스케일링을 하면서 네트워크의 width, depth, resolution의 모든 차원을 균형잡는 것은 매우 중요하다.
 
 <p align="center">
-  <img src="./formula3.png" width="500">
+  <img src="./images/formula3.png" width="500">
 </p>
 
 - $\alpha, \beta, \gamma$는 small grid search에 의해 결정될 수 있는 상수.
@@ -213,7 +213,7 @@ $$
 <!-- TOC --><a name="4-efficientnet-architecture"></a>
 ## 4. EfficientNet Architecture
 <p align="center">
-  <img src="./table2.png" width="800">
+  <img src="./images/table2.png" width="800">
 </p>
 
 - baseline인 EfficientNet-B0부터 시작해서 아래의 두 단계로 compound scaling method를 적용하여 스케일을 늘림.
@@ -235,7 +235,7 @@ $$
 ### 5.1. Scaling Up MobileNets and ResNets
 
 <p align="center">
-  <img src="./table3.png" width="350">
+  <img src="./images/table3.png" width="350">
 </p>
 
 - 위 개념을 증명하기 위해 널리 사용되는 모델인 MobileNets과 ResNet에 scaling method를 적용함.
@@ -245,7 +245,7 @@ $$
 ### 5.2. ImageNet Results for EfficientNet
 
 <p align="center">
-  <img src="./figure5.png" width="400">
+  <img src="./images/figure5.png" width="400">
 </p>
 
 - EfficientNet 모델은 일반적으로 비슷한 accuracy를 가진 다른 ConvNets보다 더 적은 파라미터와 FLOPS를 사용한다.
@@ -253,7 +253,7 @@ $$
     - EfficientNet-B3가 18배 적은 FLOPS를 사용하면서도 ResNeXt-101보다 더 높은 accuracy를 달성했다.
 
 <p align="center">
-  <img src="./table4.png" width="350">
+  <img src="./images/table4.png" width="350">
 </p>
 
 - 또한 Latency를 검증하기 위해서 몇 개의 대표적인 ConvNet을 실제 CPU에서 Inference latency를 측정했다.
@@ -263,13 +263,13 @@ $$
 ### 5.3. Transfer Learning Results for EfficientNet
 
 <p align="center">
-  <img src="./table6.png" width="400">
+  <img src="./images/table6.png" width="400">
 </p>
 
 - 위의 데이터셋을 사용하여 EfficientNet의 Transfer Learning 퍼포먼스를 평가해보았다.
 
 <p align="center">
-  <img src="./figure6.png" width="800">
+  <img src="./images/figure6.png" width="800">
 </p>
 
 - EfficientNet이 기존의 모델(ResNet, DenseNet, NASNet)보다 더 적은 파라미터를 가지면서도 일관적으로 더 나은 accuracy를 얻었다.
@@ -278,7 +278,7 @@ $$
 ## 6. Discussion
 
 <p align="center">
-  <img src="./figure7.png" width="800">
+  <img src="./images/figure7.png" width="800">
 </p>
 
 - compound scaling method가 왜 다른 방법들보다 나은지를 더욱 이해하기 위해 다른 스케일링 방법을 사용한 모델들과CAM(class activation map)을 비교하였다.
