@@ -30,4 +30,4 @@
 ### [PET] Point-Query Quadtree for Crowd Counting, Localization, and More
 
 [✨ issue](https://github.com/HayeonLee88/AI_paper_review/issues/3#issue-2484968769)
- | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/blob/5c5a11ff9e7dd6a17549a3aef8d63ddb4218e9c3/Point%20quEry%20Transformer)
+ | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/tree/de3524f3db0656e0b930c74315c7c27d7865f862/Point%20quEry%20Transformer)
