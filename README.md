@@ -24,10 +24,10 @@
 ### [EfficientNet] Rethinking Model Scaling for Convolutional Neural Networks
 
 [✨ issue](https://github.com/HayeonLee88/AI_paper_review/issues/2#issue-2484965084)
- | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/blob/5c5a11ff9e7dd6a17549a3aef8d63ddb4218e9c3/EfficientNet/EfficientNet.md)
+ | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/blob/5c5a11ff9e7dd6a17549a3aef8d63ddb4218e9c3/EfficientNet/README.md)
 
 ## 2024.05.23
 ### [PET] Point-Query Quadtree for Crowd Counting, Localization, and More
 
 [✨ issue](https://github.com/HayeonLee88/AI_paper_review/issues/3#issue-2484968769)
- | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/blob/5c5a11ff9e7dd6a17549a3aef8d63ddb4218e9c3/Point%20quEry%20Transformer/PET.md)
+ | [🖇️ doc](https://github.com/HayeonLee88/AI_paper_review/blob/5c5a11ff9e7dd6a17549a3aef8d63ddb4218e9c3/Point%20quEry%20Transformer/README.md)
